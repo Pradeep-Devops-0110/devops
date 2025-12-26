@@ -5,14 +5,6 @@ pipeline {
     REGISTRY = 'rvp0110/micro-dev'
     IMAGE_TAG = 'latest'
   }
-
-  stages {
-    stage('Checkout') {
-      steps {
-        checkout scm
-      }
-    }
-
     stage('Build Images') {
       steps {
         sh """
