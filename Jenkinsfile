@@ -3,14 +3,22 @@ pipeline {
 
   environment {
     REGISTRY = 'rvp0110/micro-dev'
-    IMAGE_TAG = 'latest'
+    IMAGE_TAG = "${env.GIT_COMMIT}"
   }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        git branch: 'main', url: 'https://github.com/Pradeep-Devops-0110/devops.git'
+      }
+    }
+
     stage('Build Images') {
       steps {
         sh """
-          docker build -t ${REGISTRY}/catalog-service:${IMAGE_TAG} ./catalog-service
-          docker build -t ${REGISTRY}/order-service:${IMAGE_TAG} ./order-service
-          docker build -t ${REGISTRY}/payment-service:${IMAGE_TAG} ./payment-service
+          docker build -t ${REGISTRY}/catalog-service:${IMAGE_TAG} ./k8s/catalog-service
+          docker build -t ${REGISTRY}/order-service:${IMAGE_TAG} ./k8s/order-service
+          docker build -t ${REGISTRY}/payment-service:${IMAGE_TAG} ./k8s/payment-service
         """
       }
     }
