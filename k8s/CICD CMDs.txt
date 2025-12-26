@@ -1,0 +1,31 @@
+CICD CMDs
+
+kubectl get pods
+kubectl logs deployment/<deployment-name>
+kubectl rollout restart deployment <deployment-name>
+kubectl delete deployment <deployment-name>
+kubectl apply -f <file.yaml>
+docker build -t <image-name> ./service
+docker build --no-cache -t <image-name> ./service
+minikube docker-env
+minikube -p minikube docker-env | Invoke-Expression
+Kubernetes Microservices Troubleshooting Summary
+kubectl describe svc <service-name>
+kubectl describe deployment <deployment-name>
+kubectl describe ingress
+kubectl exec -it <pod-name> -- curl http://localhost:8080/<endpoint>
+curl.exe http://microservices.local/<endpoint
+
+Start Jenkins container:
+docker run -d --name jenkins  -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home  jenkins/jenkins:lts
+Get initial admin password:
+docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+Install Docker CLI inside Jenkins container:
+docker exec -u root -it jenkins bash
+apt-get update && apt-get install -y docker.io
+exit
+Install kubectl for deployments
+docker exec -u root -it jenkins bash
+curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl && mv kubectl /usr/local/bin/
+exit

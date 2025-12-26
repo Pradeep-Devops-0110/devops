@@ -1,0 +1,14 @@
+# Ignore Visual Studio cache
+.vs/
+*.vsidx
+
+# Ignore build artifacts
+bin/
+obj/
+
+# Ignore OS/system files
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db

@@ -1,0 +1,22 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-deployment
+  labels:
+    app: order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+        - name: order
+          image: rvp0110/micro-dev:order    # 👈 local image name
+          imagePullPolicy: Always           # 👈 force Kubernetes to use local image
+          ports:
+            - containerPort: 8080
